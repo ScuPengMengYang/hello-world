@@ -1,21 +1,80 @@
-/*满足下列条件的自然数称为超级素数:该数本身,所有数字之和,所有数字之积以及所有数字的平方和都是素数.例如113就是一个超级素数.求[100,9999]之内:(1)超级素数的个数.(2)所有超级素数之和.(3)最大的超级素数.*/
-int sum_bit(int num) {
-  return 0;
+#include<stdio.h>
+int isPrime(int x);
+int sumNum(int x);
+int mulNum(int x);
+int sqrNum(int x);
+int main(){
+	int i,ssum=0,smax,n=0;
+	for(i=100;1<999;i++){
+	int is=isPrime(i);
+    int sum=sumNum(i);
+	int mul=mulNum(i);
+	int sqr=sqrNum(i);
+	if(isPrime(i)==1&&sumNum(i)==1&&mulNum(i)==1&&sqrNum(i)==1)
+	{
+	ssum=ssum+i;
+	n=n+1;
+	smax=i;
+     }
+	} 
+	printf("���������ĺ��ǣ�%d\n���������ĸ����ǣ�%d\n��������������ǣ�%d\n",ssum,n,smax)
+;
+return 0;} 
+int isPrime(int x){
+	int a,b;
+	for(a=2;a<x;a++)
+	{
+	b=x%a;
+	if(b==0){
+	return 0;
+	break;}
+	else
+	return 1;
+	}
+}
+int sumNum(int x){
+	int a,j,b ;
+	a=x%10+x/10%10+x/100%10;
+	if(a==2)
+	return 1;
+	else{
+	for(j=2;j<a;j++){
+		b=a%j;
+	if(b==0){
+	return 0;
+	break;}
+	else
+	return 1;
+	}}
+}
+int mulNum(int x){
+	int a,j,b; 
+	a=(x%10)*(x/10%10)*(x/100%10);
+	if(a==2)
+	return 1;
+	else{
+	for(j=2;j<a;j++){
+		b=a%j;
+	if(b==0){
+	return 0;
+	break;}
+	else
+	return 1;
+	}}
+}
+int sqrNum(int x){
+	int a,j,b ;
+	a=(x%10)*(x%10)+(x/10%10)*(x/10%10)+(x/100%10)*(x/100%10);
+	if(a==2)
+	return 1;
+	else{
+	for(j=2;j<a;j++){
+		b=a%j;
+	if(b==0){
+	return 0;
+	break;}
+	else
+	return 1;
+	}}
 }
 
-int multi_bit(int num) {
-  return 0;
-}
-
-int square_sum_bit(int num) {
-  return 0;
-}
-
-bool isprime(int num) {
-  return false;
-}
-
-int main() {
-  if(isprime(113)&&isprime(sum_bit(113))&&isprime(multi_bit(113))&&isprime(square_sum_bit(113)))
-    //to do sth
-}
